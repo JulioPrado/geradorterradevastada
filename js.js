@@ -165,6 +165,12 @@ function gerarPersonagem(tipo){
 				var tormentos = '';
 				var conviccao = '';
 
+				if (personagem.obstrucoes>4&&personagem.obstrucoes<9) {
+					personagem.condicoes.push("Atormentado");
+				} else if (personagem.obstrucoes>8) {
+					personagem.condicoes.push("Extremamente atormentado");
+				}
+
 				switch (personagem.obstrucoes){
 					case 1:
 						conviccao='⬡⬡⬡⬡|⬡⬡⬡⬡|⬡⬡⬡⬢'
@@ -224,19 +230,19 @@ function gerarPersonagem(tipo){
 			+							personagem.nome+", "+personagem.idade+" anos."
 			+"							</span>"
 			+"							<br>"
-			+"							<span class='negrito'>Características:"
+			+"							<p><span class='negrito'>Características:"
 			+"							</span>"
 			+							caracteristicas
-			+"							<br>"
-			+"							<span class='negrito'>Condições:"
+			+"							</p>"
+			+"							<p><span class='negrito'>Condições:"
 			+"							</span>"
 			+                            condicoes
-			+"							<p>"
-			+"							<strong>Tormento: </strong>"
+			+"							</p>"
+			+"							<p><span class='negrito'>Tormentos: </span>"
 			+                            tormentos
 			+"							</p>"
-			+"							<p>"
-			+"							<strong>Convicção:</strong>"
+			+"							<p class='centro'>"
+			+"							<span class='negrito'>Convicção:</span>"
 			+"							<br>"
 			+	 						conviccao
 			+"							</p>"
@@ -295,11 +301,12 @@ caracFisico.push(
 	'passos suaves',
 	'ágil',
 	'rápido',
+	'equilíbrio perfeito',
 	'corpo leve',
 	'corpo pesado',
 	'vários anos de natação',
 	'rosto bonito',
-	'corpo atraente',
+	'corpo dentro dos padrões de beleza',
 	'muito fôlego',
 	'alta tolerância ao frio',
 	'alta tolerância ao calor',
@@ -323,6 +330,8 @@ caracFisico.push(
 );
 
 caracMental.push(
+	'ótimo senso de direção',
+	'persuasão',
 	'tem bastante atenção',
 	'agradável',
 	'valoriza suas amizades',
@@ -332,6 +341,8 @@ caracMental.push(
 	'gosta de acolher',
 	'atraente',
 	'gosta de aventuras',
+	'sempre se organiza',
+	'planejamento é essencial',
 	'auspicios',
 	'se dedica ao máximo',
 	'altruísta',
@@ -352,8 +363,19 @@ caracMental.push(
 	'tranquilizante',
 	'temperamento forte',
 	'gosta de trabalhar',
-	'paciente'
-
+	'paciente',
+	'evita problemas',
+	'não confia em ninguém',
+	'liderança',
+	'enciclopédia humana',
+	'sobrevivência é o que importa',
+	'sabe fazer armadilhas',
+	'militante de esquerda',
+	'militante de direita',
+	'todos devem ser salvos',
+	'todos os infectados devem ser erradicados',
+	'sabe técnicas de tortura',
+	'sabe primeiros socorros'
 );
 
 caracMotiva.push(
@@ -361,15 +383,16 @@ caracMotiva.push(
 	'fé em si próprio',
 	'amor pela família',
 	'fé em um futuro bom',
-	'vingança',
-	'esperança',
+	'movidx por vingança',
+	'esperança sempre',
 	'medo da morte',
 	'autocobrança',
-	'dívida',
-	'rancor'
+	'movidx por uma dívida emocional com alguém',
+	'movidx por rancor'
 );
 
 caracProfiss.push(
+	'Acadêmico(a)',
 	'Motorista',
 	'Militar',
 	'Engenheiro(a) civil',
@@ -377,6 +400,7 @@ caracProfiss.push(
 	'Empresário(a)',
 	'Professor(a)',
 	'Policial',
+	'Jornalista',
 	'Bombeiro(a)',
 	'Advogado(a)',
 	'Pedreiro(a)',
@@ -386,6 +410,7 @@ caracProfiss.push(
 	'Dentista',
 	'Atleta profissional',
 	'Artista',
+	'Técnico de TI',
 	'Hacker',
 	'Programador(a)',
 	'Auxiliar administrativo',
@@ -404,15 +429,93 @@ caracProfiss.push(
 	'Biólogo(a)',
 	'Químico(a)',
 	'Matador(a) de aluguel',
-	'Prostituta(o)'
+	'Prostituta(o)',
+	'Operário(a) de fábrica',
+	'Gerente de fábrica',
+	'Farmacêutico(a)',
+	'Fazendeiro(a)',
+	'Vendedor(a)'
 );
 
 caracDefeito.push(
+	'compulsão por mentir',
+	'elitista',
+	'xenofóbicx',
+	'racista',
+	'antissocial',
+	'insônia',
+	'arrogante',
+	'claustrofobia',
+	'orgulhosx',
 	'QI baixo',
 	'impaciente',
 	'acima do peso',
+	'desnutrido',
+	'problema respiratório',
+	'excessivamente magrx',
 	'manca com uma perna',
-	'depressivo'
+	'resistência baixa',
+	'baixa estatura',
+	'passos pesados',
+	'desengonçadx',
+	'movimentos lentos',
+	'pensamento lento',
+	'não sabe nadar',
+	'beleza não é seu forte',
+	'baixa tolerância ao frio',
+	'baixa tolerância ao calor',
+	'medo de altura',
+	'não se sente bem em florestas',
+	'não tem muito condicionamento físico',
+	'come um boi se deixar',
+	'problema de visão',
+	'baixa imunidade',
+	'audição prejudicada',
+	'luta corporal não é o seu forte',
+	'mira boa como a de um cego',
+	'desatentx',
+	'pessoa desagradável',
+	'não liga muito para os outros',
+	'não acredita em amor',
+	'não consegue dizer não',
+	'triste a maior parte do tempo',
+	'ninguém é bem-vindo',
+	'prefere ficar na zona de conforto',
+	'não se arrisca por nada',
+	'não gosta de receber conselhos',
+	'faz tudo com má vontade',
+	'pessoa desastrada',
+	'dependente dos outros',
+	'preguiça em pessoa',
+	'faz tudo nas coxas',
+	'imprudente',
+	'higiene precária',
+	'deixa sujeita em qualquer lugar',
+	'ódio incontrolável por alguém',
+	'não consegue se importar com nada além de si mesmo',
+	'ranzinza',
+	'desonestidade',
+	'o mundo é dos espertos',
+	'regras foram feitas para serem quebradas',
+	'se afoba por qualquer coisa',
+	'pessoa difícil de lidar',
+	'odeia qualquer tipo de trabalho',
+	'impaciente',
+	'depressivo',
+	'vício em medicamento',
+	'vício em alguma droga',
+	'vício em álcool',
+	'vício em cigarro',
+	'vício em jogos de azar/cartas',
+	'doença sem cura - tratamento contínuo',
+	'cegx',
+	'surdx',
+	'alguns dentes a menos',
+	'não gosta de barulhos altos',
+	'pavor de ratos e baratas',
+	'medo de cachorros',
+	'fobia de dirigir',
+	'anti-vacinas e anti-ciência'
 );
 
 caracTodas=caracDefeito.concat(caracMotiva.concat(caracFisico.concat(caracMental)));
@@ -425,26 +528,60 @@ var condEmocionais=[];
 var todasCond=[];
 
 condArmad.push(
-	'sem armas',
-	'com porrete',
-	'com faca',
-	'com pistola'
+	'armado com pedaço de madeira',
+	'armado com barra de ferro',
+	'armado com faca',
+	'armado com facão',
+	'armado com pistola',
+	'armado com arma de fogo',
+	'improvisando ferramenta comum como arma',
+	'com arma de alto calibre e muita munição',
+	'com colete a prova de balas',
+	'com veículo'
 );
 
 condSaude.push(
-	'saudável',
+	'bem alimentadx',
+	'bem descansadx',
 	'com resfriado',
 	'desidratadx',
-	'com fome'
+	'com fome',
+	'sem fôlego',
+	'com ânsia de vômito',
+	'com pressão baixa',
+	'assustadx',
+	'surto neurótico',
+	'dor de dente',
+	'dor de barriga',
+	'dor de cabeça',
+	'com um ferimento leve',
+	'diversos ferimentos leves',
+	'ferimento mediano - já melhorando',
+	'ferimento mediano - precisando de cuidados',
+	'ferimento mediano infeccionando',
+	'ferimento grave - mas estável',
+	'ferimento grave - precisando de cuidados',
+	'ferimento gravíssimo e perdendo muito sangue',
+	'ferimento de bala',
+	'dores musculares',
+	'desnutrição',
+	'doença de pele',
+	'precisando de remédios',
+	'DST',
+	'câimbras',
+	'tornozelo torcido',
+	'dor nas costas'
+
 );
 
 condEmocionais.push(
-	'mentalidade otimista',
-	'mentalidade pessimista',
+	'em crise de ansiedade',
+	'em crise de pânico',
 	'triste',
 	'feliz',
-	'exausto',
-	'sem fôlego'
+	'motivadx',
+	'desanimadx',
+	'desconfiadx'
 );
 
 todasCond=condArmad.concat(condSaude.concat(condEmocionais));
@@ -453,7 +590,7 @@ todasCond=condArmad.concat(condSaude.concat(condEmocionais));
 var listaTormentos=[]; 
 
 listaTormentos.push(
-	'Acidente',
+	'Acidente de veículo',
 	'Violência sexual',
 	'História envolvendo aborto',
 	'Morte de cônjuge',
@@ -462,5 +599,15 @@ listaTormentos.push(
 	"Vítima de tentativa de homicídio",
 	'Viu alguém morrer atropelado',
 	'Assalto violento',
-	'Sequestro'
+	'Sequestro',
+	'Viu alguém ser devorado por infectados',
+	'Sente remorso por não estar com a família quando mais precisaram',
+	'Fui obrigado a deixar um amigo/familiar ser devorado para sobreviver',
+	'Teve amigo/familiar assassinado por um humano atrás de comida/suprimentos',
+	'Precisou matar um amigo/familiar que se infectou',
+	'Presenciou uma chacina',
+	'Presenciou uma criança ser devorada por um infectado',
+	'Para se salvar abandonou amigo/familiar em situação de perigo envolvendo infectados e até hoje não sabe o que aconteceu',
+	'Viu pessoas divididas em pedaços',
+	'Já sofreu tortura'
 );

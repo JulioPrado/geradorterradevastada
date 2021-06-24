@@ -1,9 +1,4 @@
 
-html{
-	scroll-behavior: smooth;
-}
-
-
 body{
 	font: "Lucida Grande", "Lucida Sans", Tahoma, Verdana, sans-serif; 
 	width: 100%;
@@ -30,6 +25,11 @@ div#cabecalho{
 .negrito{
 	font-weight: bolder;
 }
+
+.centro{
+	text-align: center;
+}
+
 
 div#botoes{
 	width: 95%;
@@ -69,15 +69,22 @@ footer a:hover{
 }
 
 .fichaFinal { 
-	padding: 10px;
-	margin: 5px;
+	background-color: #fff;
+	width: 100%;
+	text-align: left;
+	display: inline-block;
+	padding: 15px;
+	margin: 10px;
 	border: 1px solid black;
-	border-radius: 5%;
-    font-size: 0.8em;     
+	border-radius: 2%;
+    font-size: 0.8em;    
+    box-shadow: 4px 4px 6px black; 
 }
 
 span.nomeFicha{
 	font-size: 1.3em;  
+	text-align: center;
+	display: block;
 }
 
 div#humano{
