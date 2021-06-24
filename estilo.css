@@ -27,13 +27,16 @@ div#cabecalho{
     text-align: right;
 } 
 
+.negrito{
+	font-weight: bolder;
+}
+
 div#botoes{
 	width: 95%;
 }
 
-  
-p{ 
-    font-size: 1.2em;     
+div#tela{
+	padding-bottom: 40px;
 }
 
 
@@ -43,7 +46,6 @@ footer{
 	background-color: #140D0D;
 	position: fixed;
     bottom:0;
-	margin: 0;
 	padding: 10px;
 }
 
@@ -62,13 +64,23 @@ footer a:hover{
 
 .fichas{
 	margin: 10px;
-	border: 1px solid black;
 	width: 100%;
 	min-height: 300px;
-	height:100%;
 }
 
-div#ficha{
+.fichaFinal { 
+	padding: 10px;
+	margin: 5px;
+	border: 1px solid black;
+	border-radius: 5%;
+    font-size: 0.8em;     
+}
+
+span.nomeFicha{
+	font-size: 1.3em;  
+}
+
+div#humano{
 	margin-top: 10px;
 	margin-bottom: 60px;
 	padding: 10px;

@@ -23,15 +23,20 @@
 				</a>
 			<hr>
 		</div>
-		<div id="botoes" class="container-fluid d-flex">
 
+		<div class="alert alert-dark alert-dismissible fade show" role="alert">
+  			Em caso de características ou condições conflitantes entre si, considere apenas a que fizer mais sentido com o resto da ficha.
+        	<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		</div>
+
+		<div id="botoes" class="container-fluid d-flex">
 			<div style="width: 100%;" class="row align-self-center text-center">
 
-				<div class="col-md-4 align-self-center">
-					<button type="button" class="btn btn-dark" onclick="gerarHumano();">
+				<div class="col-md-4">
+					<button type="button" class="btn btn-dark" onclick="pedirPersonagem('humano');">
 						Gerar Humano
 					</button>
-					<select style="display: inline; width: 50px;" class="form-control">
+					<select style="display: inline; width: 50px;" id="qnthumano" class="form-control">
 						<option>1</option>
 						<option>2</option>
 						<option>3</option>
@@ -54,12 +59,15 @@
 						<option>20</option>
 					</select>
 					
-					<div id="" class="fichas">
+					<div id="humano" class="fichas">
 						
+						
+
+
 					</div>
 				</div>
 
-				<div class="col-md-4 align-self-center">
+				<div class="col-md-4">
 					<button type="button" class="btn btn-dark" onclick="gerarAnimal();">
 						Gerar Animal
 					</button>
@@ -90,7 +98,7 @@
 					</div>
 				</div>
 
-				<div class="col-md-4 align-self-center">
+				<div class="col-md-4">
 					<button type="button" class="btn btn-dark" onclick="gerarInfectado();">
 						Gerar Infectado
 					</button>
