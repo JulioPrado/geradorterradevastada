@@ -247,6 +247,9 @@ function pedirPersonagem(tipo){
 
 	//mostra o botão imprimir
 	$('#imprimir').removeClass('d-none');
+
+	/* scroll até as fichas*/
+	window.scroll(0,$( "#"+tipo ).offset().top); 
 	
 }
 

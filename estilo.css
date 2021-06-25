@@ -1,3 +1,6 @@
+html{
+	scroll-behavior: smooth;
+}
 
 body{
 	font: "Lucida Grande", "Lucida Sans", Tahoma, Verdana, sans-serif; 
@@ -65,7 +68,6 @@ footer a:hover{
 .fichas{
 	margin: 10px;
 	width: 100%;
-	min-height: 300px;
 }
 
 .fichaFinal { 

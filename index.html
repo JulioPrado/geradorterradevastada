@@ -15,6 +15,7 @@
 <body>
 	<div id="tela">
 		<div id="cabecalho">
+
 			<h1 class="text-center">
 				Gerador aleatório para 
 			</h1>
@@ -33,67 +34,77 @@
 			<div style="width: 100%;" class="row align-self-center text-center">
 
 				<div class="col-md-6">
-					<button type="button" class="btn btn-dark" onclick="pedirPersonagem('humano');">
-						Gerar Humano
-					</button>
-					<select style="display: inline; width: 50px;" id="qnthumano" class="form-control">
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
-						<option>6</option>
-						<option>7</option>
-						<option>8</option>
-						<option>9</option>
-						<option>10</option>
-						<option>11</option>
-						<option>12</option>
-						<option>13</option>
-						<option>14</option>
-						<option>15</option>
-						<option>16</option>
-						<option>17</option>
-						<option>18</option>
-						<option>19</option>
-						<option>20</option>
-					</select>
-					<button type="button" class="btn-small btn-danger d-none" id="imprimir" onclick="imprimirFichas()">Imprimir</button>
-
+					<div class="d-block">
+						<button type="button" class="btn btn-dark" onclick="pedirPersonagem('humano');">
+							Gerar Humano
+						</button>
+						<select style="display: inline; width: 50px;" id="qnthumano" class="form-control">
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
+							<option>6</option>
+							<option>7</option>
+							<option>8</option>
+							<option>9</option>
+							<option>10</option>
+							<option>11</option>
+							<option>12</option>
+							<option>13</option>
+							<option>14</option>
+							<option>15</option>
+							<option>16</option>
+							<option>17</option>
+							<option>18</option>
+							<option>19</option>
+							<option>20</option>
+						</select>
+						<button type="button" class="btn btn-sm btn-danger d-none" id="imprimir" onclick="imprimirFichas('humano')">Imprimir</button>
+					</div>
+					<img src="imgs/human.jpg" style="height: 250px; margin-top:20px;" />
 					<div id="humano" class="fichas">
+						
 						
 
 					</div>
 				</div>
 
 				<div class="col-md-6">
-					<button type="button" class="btn btn-dark" onclick="gerarInfectado();">
-						Gerar Infectado
-					</button>
-					<select style="display: inline; width: 50px;" class="form-control">
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
-						<option>6</option>
-						<option>7</option>
-						<option>8</option>
-						<option>9</option>
-						<option>10</option>
-						<option>11</option>
-						<option>12</option>
-						<option>13</option>
-						<option>14</option>
-						<option>15</option>
-						<option>16</option>
-						<option>17</option>
-						<option>18</option>
-						<option>19</option>
-						<option>20</option>
-					</select>
+					<div class="d-block">
+						<button type="button" class="btn btn-dark" onclick="gerarInfectado();">
+							Gerar Infectado
+						</button>
+						<select style="display: inline; width: 50px;" class="form-control">
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
+							<option>6</option>
+							<option>7</option>
+							<option>8</option>
+							<option>9</option>
+							<option>10</option>
+							<option>11</option>
+							<option>12</option>
+							<option>13</option>
+							<option>14</option>
+							<option>15</option>
+							<option>16</option>
+							<option>17</option>
+							<option>18</option>
+							<option>19</option>
+							<option>20</option>
+						</select>
+						<button type="button" class="btn-small btn-danger d-none" id="imprimir" onclick="imprimirFichas('infectado')">Imprimir</button>
+					</div>
+					<img src="imgs/zmb.jpg" style="height: 250px; margin-top:20px;" />
+
 					<div id="infectado" class="fichas">
-						
+
+					 
+
 					</div>
 				</div>
 				
