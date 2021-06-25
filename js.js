@@ -14,47 +14,12 @@ function randomEntre(min,max){
 }	
 
 
-function imprimirFicha() {
+function imprimirFichas() {
     /*conteudoImprimir = document.getElementById('ficha').innerHTML;
     document.body.innerHTML = conteudoImprimir;*/
     window.print();
 
     /*document.location.reload(); */
-}
-
-function getNomeAleatorio(){
-  let quantidadeDeSilabas=getRandomIntInclusive(2,3);
-  let nome="";
-  for (contadorSilaba=1;contadorSilaba<=quantidadeDeSilabas;contadorSilaba++){
-    nome=nome +  getConsoanteAleatoria() + getVogalAleatoria() ;
-  }
-
-  return nome;
-
-}
-
-function getRandomIntInclusive(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-function getVogalAleatoria(){
-
-  let listaVogais="AEOIUY";
-  let numeroAleatorio=getRandomIntInclusive(1, 6);
-
-  return listaVogais.substring(numeroAleatorio-1,numeroAleatorio);
-
-}
-
-function getConsoanteAleatoria(){
-
-  let listaConsoantes="BCDFGHJKLMNPQRSTVXWZ";
-  let numeroAleatorio=getRandomIntInclusive(1, 20);
-
-  return listaConsoantes.substring(numeroAleatorio-1,numeroAleatorio);
-
 }
 
 /*-------------------------------------- gerar ficha--*/
@@ -74,12 +39,11 @@ function gerarPersonagem(tipo){
 
 			//define Nome
 			function defineNome(){
-				personagem.nome=getNomeAleatorio();
+				
+				var nome= listaNome[randomAte(listaNome.length)];
+				var sobrenome= listaSobrenome[randomAte(listaSobrenome.length)];
 
-				/* depois fazer lista de nomes
-				https://gerador-nomes.herokuapp.com
-				https://pt.fakenamegenerator.com/gen-random-us-us.php
-				*/
+				personagem.nome=nome+' '+sobrenome;
 			}
 			defineNome();
 
@@ -297,10 +261,10 @@ caracFisico.push(
 	'corpo atlético',
 	'resistência invejável',
 	'forte como um touro',
-	'quase 2m de altura',
+	'estatura muito acima da média',
 	'passos suaves',
 	'ágil',
-	'rápido',
+	'passos rápidos',
 	'equilíbrio perfeito',
 	'corpo leve',
 	'corpo pesado',
@@ -311,7 +275,7 @@ caracFisico.push(
 	'alta tolerância ao frio',
 	'alta tolerância ao calor',
 	'escalava com frequência',
-	'trilheiro',
+	'adora trilhas',
 	'maratonista',
 	'sente pouca fome',
 	'visão aguçada',
@@ -323,15 +287,16 @@ caracFisico.push(
 	'conhece Jiu-jitsu',
 	'bastante flexibilidade',
 	'proficiência com armas brancas',
+	'aparência angelical',
 	'mestre das facas',
 	'boa mira',
 	'sabe atirar',
-	'bom de briga'
+	'sabe brigar'
 );
 
 caracMental.push(
 	'ótimo senso de direção',
-	'persuasão',
+	'técnicas de persuasão',
 	'tem bastante atenção',
 	'agradável',
 	'valoriza suas amizades',
@@ -343,30 +308,28 @@ caracMental.push(
 	'gosta de aventuras',
 	'sempre se organiza',
 	'planejamento é essencial',
-	'auspicios',
 	'se dedica ao máximo',
 	'altruísta',
 	'ágil',
 	'tem fama por sua astúcia',
 	'sempre toma cautela',
-	'angelical',
 	'autossuficiente',
 	'pessoa ativa',
 	'tem juízo',
 	'chatx com higiene',
 	'mania de limpeza',
-	'apaixonado por alguém',
+	'apaixonadx por alguém',
 	'tem zelo com o que importa',
 	'jovial',
-	'ultra-honesto',
-	'ultracorreto',
-	'tranquilizante',
+	'ultra-honestx',
+	'ultracorretx',
+	'sabe tranquilizar',
 	'temperamento forte',
 	'gosta de trabalhar',
 	'paciente',
 	'evita problemas',
 	'não confia em ninguém',
-	'liderança',
+	'exala liderança',
 	'enciclopédia humana',
 	'sobrevivência é o que importa',
 	'sabe fazer armadilhas',
@@ -425,7 +388,7 @@ caracProfiss.push(
 	'Segurança',
 	'Piloto(a)',
 	'Cientista',
-	'Padre/Freira',
+	'Lider religioso',
 	'Biólogo(a)',
 	'Químico(a)',
 	'Matador(a) de aluguel',
@@ -445,12 +408,12 @@ caracDefeito.push(
 	'antissocial',
 	'insônia',
 	'arrogante',
-	'claustrofobia',
+	'tem claustrofobia',
 	'orgulhosx',
 	'QI baixo',
 	'impaciente',
 	'acima do peso',
-	'desnutrido',
+	'desnutridx',
 	'problema respiratório',
 	'excessivamente magrx',
 	'manca com uma perna',
@@ -490,7 +453,7 @@ caracDefeito.push(
 	'faz tudo nas coxas',
 	'imprudente',
 	'higiene precária',
-	'deixa sujeita em qualquer lugar',
+	'deixa sujeira em qualquer lugar',
 	'ódio incontrolável por alguém',
 	'não consegue se importar com nada além de si mesmo',
 	'ranzinza',
@@ -528,12 +491,12 @@ var condEmocionais=[];
 var todasCond=[];
 
 condArmad.push(
-	'armado com pedaço de madeira',
-	'armado com barra de ferro',
-	'armado com faca',
-	'armado com facão',
-	'armado com pistola',
-	'armado com arma de fogo',
+	'armadx com pedaço de madeira',
+	'armadx com barra de ferro',
+	'armadx com faca',
+	'armadx com facão',
+	'armadx com pistola',
+	'armadx com arma de fogo',
 	'improvisando ferramenta comum como arma',
 	'com arma de alto calibre e muita munição',
 	'com colete a prova de balas',
@@ -610,4 +573,49 @@ listaTormentos.push(
 	'Para se salvar abandonou amigo/familiar em situação de perigo envolvendo infectados e até hoje não sabe o que aconteceu',
 	'Viu pessoas divididas em pedaços',
 	'Já sofreu tortura'
+);
+
+/* Nomes --------------------------------------------- */
+/* depois fazer lista de nomes
+				https://gerador-nomes.herokuapp.com
+				https://pt.fakenamegenerator.com/gen-random-us-us.php
+				*/
+var listaNome=[];
+var listaSobrenome=[];
+
+listaNome.push(
+	'Rafael',
+	'Bruno',
+	'Tiago',
+	'Daniel',
+	'Miguel',
+	'Julio',
+	'Eduardo',
+	'Eduarda',
+	'Rafaela',
+	'Daniela',
+	'Julia',
+	'Mateus',
+	'Sandy',
+	'Lucas',
+	'Diana',
+	'Andre',
+	'Flávia',
+	'Caroline',
+	'Thabata'
+);
+
+listaSobrenome.push(
+	'Estevam',
+	'Silva',
+	'Santos',
+	'Ferreira',
+	'Nascimento',
+	'Perez',
+	'Militão',
+	'Monteiro',
+	'Abdala',
+	'Santiago',
+	'Pereira',
+	'Arruda'
 );

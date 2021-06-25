@@ -108,16 +108,18 @@ div#humano{
 			/*font-size: 1.3em!important;*/
 		}	
 	  body * {
-	    visibility: hidden;
+	   visibility: hidden;
 	  }
 
-	  #ficha, #ficha * {
+	  #humano, #humano * {
 	    visibility: visible;
 	  }
-	  #ficha {
+	  #humano {
 	    position: absolute;
 	    left: 0;
 	    top: 0;
+	    
+	    width: 95vw;
 	  }
 		
 }
