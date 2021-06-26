@@ -33,6 +33,11 @@ div#cabecalho{
 	text-align: center;
 }
 
+.remover{
+	color: red;
+	cursor: pointer;
+}
+
 
 div#botoes{
 	width: 95%;

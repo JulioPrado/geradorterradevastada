@@ -22,11 +22,17 @@ function imprimirFichas() {
     /*document.location.reload(); */
 }
 
+function removeFicha(id){
+	$(id).fadeOut();
+	//$(id).css('display','none');
+}
+
 /*-------------------------------------- gerar ficha--*/
-function gerarPersonagem(tipo){
+function gerarPersonagem(tipo,pos){
 	
 	var personagem={
 	'nome': '',
+	'pos': pos,
 	'idade':undefined,
 	'obstrucoes': 0,
 	'caracteristicas':[],
@@ -188,7 +194,8 @@ function gerarPersonagem(tipo){
 				
 
 			  $ ('#humano').append(
-			    "<div class='fichaFinal'>"
+			    "<div id='humano"+personagem.pos+"' class='fichaFinal'>"
+			+"                      <span class='right remover' onclick='removeFicha(humano"+personagem.pos+")'>Remover</span>"
 			+"						<p>"
 			+"							<span class='nomeFicha'>"
 			+							personagem.nome+", "+personagem.idade+" anos."
@@ -240,9 +247,10 @@ function limpaDiv(id){
 function pedirPersonagem(tipo){
 	limpaDiv(tipo);
  	var d = document.getElementById('qnt'+tipo).value;
-
+ 	var pos= 0;
 	for (var i=0; i<d; i++){
-		gerarPersonagem(tipo);
+		gerarPersonagem(tipo,pos);
+		pos++;
 	}
 
 	//mostra o botão imprimir
