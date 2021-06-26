@@ -47,6 +47,12 @@ div#tela{
 	padding-bottom: 40px;
 }
 
+/* Imagens -------------------------------*/
+.imgrepresent{
+ width: 80%;
+ margin-top:20px;
+}
+
 
 footer{
 	width: 100%;
@@ -121,6 +127,11 @@ div#humano{
 	  #humano, #humano * {
 	    visibility: visible;
 	  }
+
+	  .remover{
+	  	visibility: hidden!important;
+	  }
+
 	  #humano {
 	    position: absolute;
 	    left: 0;
@@ -137,6 +148,11 @@ div#humano{
 	footer span{
 		font-size: .6em;
   }
+
+  .imgrepresent{
+ 	width: 100%;
+ 	height: ;
+ }
 
   img#logo{
   	width: 100%;
