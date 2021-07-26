@@ -14,12 +14,12 @@ function randomEntre(min,max){
 }	
 
 
-function imprimirFichas() {
-    /*conteudoImprimir = document.getElementById('ficha').innerHTML;
-    document.body.innerHTML = conteudoImprimir;*/
+function imprimirFichas(tipo) {
+    $('#divImprimir').html($(tipo).clone());
+
     window.print();
 
-    /*document.location.reload(); */
+    $('#divImprimir').html('');
 }
 
 function removeFicha(id){
@@ -29,6 +29,21 @@ function removeFicha(id){
 
 /*-------------------------------------- gerar ficha--*/
 function gerarPersonagem(tipo,pos){
+
+	function colocarAleatNoArray(listaOrigem,listaDestino) {
+		/* se o item randômico já tem no array, ele gera outro item randômico, até achar um que não tenha. */
+		do{
+			var item = listaOrigem[randomAte(listaOrigem.length)];
+			console.log('Entrou no laço.')
+
+			if (listaDestino.indexOf(item) > -1) {
+			}else{
+				listaDestino.push(item);
+				 //senão dá looping infinito
+				 break;
+			}
+		 }while (listaDestino.indexOf(item) > -1);
+	}
 	
 	var personagem={
 	'nome': '',
@@ -54,7 +69,7 @@ function gerarPersonagem(tipo,pos){
 			defineNome();
 
 			//define Idade
-			 personagem.idade=randomEntre(6,70);
+			 personagem.idade=randomEntre(10,50);
 
 			 //define obstrucoes
 			 personagem.obstrucoes=randomEntre(0,6);
@@ -62,21 +77,6 @@ function gerarPersonagem(tipo,pos){
 			 //define características
 			 if (personagem.idade>17) {
 			 	personagem.caracteristicas.push(caracProfiss[randomAte(caracProfiss.length)]);
-			 }
-
-			 function colocarAleatNoArray(listaOrigem,listaDestino) {
-			  	/* se o item randômico já tem no array, ele gera outro item randômico, até achar um que não tenha. */
-			  do{
-			 		var item = listaOrigem[randomAte(listaOrigem.length)];
-			 		console.log('Entrou no laço.')
-
-			 		if (listaDestino.indexOf(item) > -1) {
-			 		}else{
-			 			listaDestino.push(item);
-			 			 //senão dá looping infinito
-			 			 break;
-			 		}
-			 	 }while (listaDestino.indexOf(item) > -1);
 			 }
 
 /* atribuições das características totalmente aleatórias ----------*/
@@ -225,11 +225,77 @@ function gerarPersonagem(tipo,pos){
 
 		break;
 
-		case 'animal':
-
-		break;
-
 		case 'infectado':
+
+			 personagem.tormentos=randomEntre(0,3);
+
+			 //define características
+			 if (personagem.tormentos==0){
+			 	personagem.tormentos='Conservado';
+			 } else if (personagem.tormentos==1) {
+			 	personagem.tormentos='Decomposição moderada';
+			 } else if (personagem.tormentos==2) {
+			 	personagem.tormentos='Decomposição avançada';
+			 } else{
+			 	personagem.tormentos='Pútrido';
+			 }
+
+			/* verifica se tem anomalia */
+			var anoma = randomEntre(0,99);
+
+			if (anoma>90) {
+				colocarAleatNoArray(listaAnomalia,personagem.caracteristicas);
+			}
+
+			/* atribuições das características totalmente aleatórias ----------*/
+			 var qntsCarac = randomEntre(2,5);
+			 for (var i=0; i<qntsCarac;i++){
+
+			 	colocarAleatNoArray(listaInfectado,personagem.caracteristicas); 	
+			 	
+			 }
+
+			function preencheInfectado(){
+
+				var caracteristicas='';
+				var genero = randomEntre(0,1);
+				console.log('Genero = '+genero);
+				 /* transforma o array em string e adiciona vírgulas e ponto final */
+				for (var i=0;i<personagem.caracteristicas.length;i++){
+					caracteristicas+=personagem.caracteristicas[i];
+					if (i==personagem.caracteristicas.length-1) {
+						caracteristicas+='.';
+					}else{
+						caracteristicas+=', ';
+					}
+				 }
+
+				 if (genero==1) {
+				 	genero='Homem';
+				 } else {
+				 	genero='Mulher';
+				 }
+
+				/* imprime os personagens na div */
+
+				  $ ('#infectado').append(
+				    "<div id='infectado"+personagem.pos+"' class='fichaFinal'>"
+				+"                      <span class='right remover' onclick='removeFicha(infectado"+personagem.pos+")'>Remover</span>"
+				+"						<p>"
+				+"						<span class='negrito'>Gênero: </span>"
+				+                            genero
+				+"						</p>"
+				+"							<p><span class='negrito'>Estado de conservação: </span>"
+				+                            personagem.tormentos
+				+"							</p>"
+				+"							<p><span class='negrito'>Características: </span>"
+				+							caracteristicas
+				+"							</p>"
+				+"	</div>"
+				    );
+			}
+
+			 preencheInfectado();
 
 		break;
 
@@ -254,7 +320,7 @@ function pedirPersonagem(tipo){
 	}
 
 	//mostra o botão imprimir
-	$('#imprimir').removeClass('d-none');
+	$('.imprimir').removeClass('d-none');
 
 	/* scroll até as fichas*/
 	window.scroll(0,$( "#"+tipo ).offset().top); 
@@ -350,7 +416,22 @@ caracMental.push(
 	'todos devem ser salvos',
 	'todos os infectados devem ser erradicados',
 	'sabe técnicas de tortura',
-	'sabe primeiros socorros'
+	'sabe primeiros socorros',
+	'bondoso',
+	'diplomata',
+	'aparência inofensiva',
+	'não suporta injustiça',
+	'bom senso',
+	'sem papas na língua',
+	'ninguém fica para trás',
+	'mulheres e crianças primeiro',
+	'sabe lidar com animais',
+	'o que é meu - é seu',
+	'bom humor',
+	'gosta de crianças',
+	'cruel',
+	'sanguinário/a'
+
 );
 
 caracMotiva.push(
@@ -363,7 +444,9 @@ caracMotiva.push(
 	'medo da morte',
 	'autocobrança',
 	'movidx por uma dívida emocional com alguém',
-	'movidx por rancor'
+	'movidx por rancor',
+	'os verdadeiros inimigos são os mortos',
+	'ordem é importante'
 );
 
 caracProfiss.push(
@@ -375,6 +458,8 @@ caracProfiss.push(
 	'Empresário(a)',
 	'Professor(a)',
 	'Policial',
+	'Cargo Político',
+	'Músico/ista',
 	'Jornalista',
 	'Bombeiro(a)',
 	'Advogado(a)',
@@ -409,7 +494,15 @@ caracProfiss.push(
 	'Gerente de fábrica',
 	'Farmacêutico(a)',
 	'Fazendeiro(a)',
-	'Vendedor(a)'
+	'Vendedor(a)',
+	'Metatalúrgico(a)',
+	'Serralheiro(a)',
+	'Marceneiro(a)',
+	'Guia turístico',
+	'Porteiro(a)',
+	'Veterinário(a)',
+	'Fisioterapeuta',
+	'Nutricionista'
 );
 
 caracDefeito.push(
@@ -1310,4 +1403,75 @@ listaSobrenome.push(
 	'Foster',
 	'Bryant',
 	'Griffin'
+);
+
+/* Infectados *******************************/
+
+var listaInfectado=[];
+var listaAnomalia=[];
+
+listaInfectado.push(
+	'ombro esquerdo com ferimento',
+	'ombro esquerdo quebrado',
+	'braço esquerdo com ferimento',
+	'braço esquerdo quebrado',
+	'cotovelo esquerdo com ferimento',
+	'cotovelo esquerdo quebrado',
+	'antebraço esquerdo com ferimento',
+	'antebraço esquerdo quebrado',
+	'mão esquerda com ferimento',
+	'mão esquerda quebrada',
+	'ombro direito com ferimento',
+	'ombro direito quebrado',
+	'braço direito com ferimento',
+	'braço direito quebrado',
+	'cotovelo direito com ferimento',
+	'cotovelo direito quebrado',
+	'antebraço direito com ferimento',
+	'antebraço direito quebrado',
+	'mão direita com ferimento',
+	'mão direita quebrada',
+	'perna esquerda com ferimento',
+	'perna esquerda quebrada',
+	'joelho esquerdo com ferimento',
+	'joelho esquerdo quebrado',
+	'pé esquerdo com ferimento',
+	'pé esquerdo quebrado',
+	'perna direita com ferimento',
+	'perna direita quebrada',
+	'joelho direito com ferimento',
+	'joelho direito quebrado',
+	'pé direito com ferimento',
+	'pé direito quebrado',
+	'ferimento no pescoço',
+	'ferimento no tórax',
+	'ferimento nas costas',
+	'ferimento na barriga',
+	'ferimento nas costelas',
+	'ferimento na nuca',
+	'ferimento nos olhos',
+	'ferimento no rosto',
+	'ferimento na boca',
+	'sem maxilar',
+	'ferimento no pescoço',
+	'marcas de tiro',
+	'marcas de queimadura',
+	'marcas de facada',
+
+);
+
+listaAnomalia.push(
+	'membros alongados',
+	'unhas enormes',
+	'dentes alongados',
+	'maxilar alongado',
+	'olhos de outra cor',
+	'mais músculos',
+	'ossos pontiagudos projetados para fora',
+	'pele grossa',
+	'ossos externos formando carapaça',
+	'cavidade que expele líquido infeccioso',
+	'membros extras',
+	'olhos disfuncionais pelo corpo',
+	'secreção infecciosa saindo pelos poros'
 );

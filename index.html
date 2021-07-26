@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-8G3B7P4HEB"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'G-8G3B7P4HEB');
+	</script>
 	<title>Gerador para Terra Devastada</title>
 	<link rel="stylesheet" href="estilo.css">
 	<!--     BOOTSTRAP              -->
@@ -25,7 +33,7 @@
 			<hr>
 		</div>
 
-		<div class="alert alert-dark alert-dismissible fade show" role="alert">
+		<div class="alert alert-warning alert-dismissible fade show" role="alert">
   			Em caso de características ou condições conflitantes entre si, considere apenas a que fizer mais sentido com o resto da ficha.
         	<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 		</div>
@@ -60,7 +68,7 @@
 							<option>19</option>
 							<option>20</option>
 						</select>
-						<button type="button" class="btn btn-sm btn-danger d-none" id="imprimir" onclick="imprimirFichas('humano')">Imprimir</button>
+						<button type="button" class="btn btn-sm btn-danger d-none imprimir" onclick="imprimirFichas('#humano')">Imprimir</button>
 					</div>
 					<img src="imgs/human.jpg" class="imgrepresent" />
 					<div id="humano" class="fichas">
@@ -72,10 +80,10 @@
 
 				<div class="col-md-6">
 					<div class="d-block">
-						<button type="button" class="btn btn-dark" onclick="gerarInfectado();">
+						<button type="button" class="btn btn-dark" onclick="pedirPersonagem('infectado');">
 							Gerar Infectado
 						</button>
-						<select style="display: inline; width: 50px;" class="form-control">
+						<select style="display: inline; width: 50px;" id="qntinfectado" class="form-control">
 							<option>1</option>
 							<option>2</option>
 							<option>3</option>
@@ -97,7 +105,7 @@
 							<option>19</option>
 							<option>20</option>
 						</select>
-						<button type="button" class="btn-small btn-danger d-none" id="imprimir" onclick="imprimirFichas('infectado')">Imprimir</button>
+						<button type="button" class="btn btn-sm btn-danger d-none imprimir" onclick="imprimirFichas('#infectado')">Imprimir</button>
 					</div>
 					<img src="imgs/zmb.jpg" class="imgrepresent"/>
 
@@ -109,18 +117,10 @@
 				</div>
 				
 			</div>
-
-
-
-
-			
-
-			
-
-			
-
 		</div>	
+		<div id="divImprimir">
 			
+		</div>		
 	</div>
 	<footer>
 		<span style="float: left;">
