@@ -454,7 +454,6 @@ caracProfiss.push(
 	'Motorista',
 	'Militar',
 	'Engenheiro(a) civil',
-	'Pedreiro(a)',
 	'Empresário(a)',
 	'Professor(a)',
 	'Policial',
@@ -1431,14 +1430,14 @@ listaInfectado.push(
 	'antebraço direito quebrado',
 	'mão direita com ferimento',
 	'mão direita quebrada',
-	'perna esquerda com ferimento',
-	'perna esquerda quebrada',
+	'coxa esquerda com ferimento',
+	'fêmur esquerdo quebrado',
 	'joelho esquerdo com ferimento',
 	'joelho esquerdo quebrado',
 	'pé esquerdo com ferimento',
 	'pé esquerdo quebrado',
-	'perna direita com ferimento',
-	'perna direita quebrada',
+	'coxa direita com ferimento',
+	'fêmur direito quebrado',
 	'joelho direito com ferimento',
 	'joelho direito quebrado',
 	'pé direito com ferimento',
@@ -1457,7 +1456,6 @@ listaInfectado.push(
 	'marcas de tiro',
 	'marcas de queimadura',
 	'marcas de facada',
-
 );
 
 listaAnomalia.push(
