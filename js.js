@@ -34,7 +34,6 @@ function gerarPersonagem(tipo,pos){
 		/* se o item randômico já tem no array, ele gera outro item randômico, até achar um que não tenha. */
 		do{
 			var item = listaOrigem[randomAte(listaOrigem.length)];
-			console.log('Entrou no laço.')
 
 			if (listaDestino.indexOf(item) > -1) {
 			}else{
@@ -240,12 +239,6 @@ function gerarPersonagem(tipo,pos){
 			 	personagem.tormentos='Pútrido';
 			 }
 
-			/* verifica se tem anomalia */
-			var anoma = randomEntre(0,99);
-
-			if (anoma>90) {
-				colocarAleatNoArray(listaAnomalia,personagem.caracteristicas);
-			}
 
 			/* atribuições das características totalmente aleatórias ----------*/
 			 var qntsCarac = randomEntre(2,5);
@@ -259,7 +252,6 @@ function gerarPersonagem(tipo,pos){
 
 				var caracteristicas='';
 				var genero = randomEntre(0,1);
-				console.log('Genero = '+genero);
 				 /* transforma o array em string e adiciona vírgulas e ponto final */
 				for (var i=0;i<personagem.caracteristicas.length;i++){
 					caracteristicas+=personagem.caracteristicas[i];
@@ -293,6 +285,19 @@ function gerarPersonagem(tipo,pos){
 				+"							</p>"
 				+"	</div>"
 				    );
+
+
+				/* verifica se tem anomalia */
+				let anoma = randomEntre(1,100);
+
+				if (anoma>85) {
+
+					let item = listaAnomalia[randomAte(listaAnomalia.length)];
+
+					$ ('#infectado'+personagem.pos).append(
+						"<p><strong>Anomalia: </strong>"
+						+item+"</p>");
+				}
 			}
 
 			 preencheInfectado();
